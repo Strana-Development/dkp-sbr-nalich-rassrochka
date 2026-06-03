@@ -384,7 +384,9 @@
       <div class="step-content">
         <p>Юрист компании «Страна» направит договор ДКП на вашу электронную почту для ознакомления.</p>
         <p>Все вопросы и замечания по договору — адресуйте менеджеру по сопровождению сделки.</p>
-        <button class="done-btn" onclick="markDone(1)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(1)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -414,7 +416,9 @@
           <strong>⚠️ Важно!</strong>
           До момента регистрации ДКП в Росреестре категорически запрещено вносить деньги напрямую на расчетный счет застройщика. Все средства вносятся только на СБР.
         </div>
-        <button class="done-btn" onclick="markDone(2)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(2)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -455,7 +459,9 @@
           <strong>⚠️ Важно!</strong>
           Биометрия, сданная только в приложении, не подойдёт для выпуска УКЭП.
         </div>
-        <button class="done-btn" onclick="markDone(3)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(3)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -478,7 +484,9 @@
           <strong>💳 Расходы</strong>
           Электронную регистрацию и госпошлину оплачивает застройщик. 
         </div>
-        <button class="done-btn" onclick="markDone(4)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(4)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -504,7 +512,9 @@
           <strong>💸 Перевод на расчетный счет застройщика</strong>
           После проверки документов банк переведёт денежные средства на расчетный счет застройщика.
         </div>
-        <button class="done-btn" onclick="markDone(5)">✓ &nbsp;Выполнено</button>
+        <button class="done-btn" onclick="markDone(5)">
+   <span class="btn-text">Отметить как выполнено</span>
+   </button>
       </div>
     </div>
   </div>
@@ -533,6 +543,15 @@
     state[n] = !state[n];
     const card = document.getElementById('step-' + n);
     card.classList.toggle('done', state[n]);
+     // изменение текста кнопки
+    const btn = card.querySelector('.done-btn');
+    const btnTextSpan = btn.querySelector('.btn-text');
+    if (state[n]) {
+    btnTextSpan.textContent = '✓ Выполнено';
+  } else {
+    btnTextSpan.textContent = 'Отметить как выполнено';
+  }
+
     updateProgress();
     if (state[n]) {
       setTimeout(() => {
